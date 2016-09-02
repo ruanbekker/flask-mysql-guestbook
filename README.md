@@ -13,7 +13,7 @@ pip install virtualenv
 ### Download, Install Requirements:
 
 ```bash
-git clone https://gitlab.com/rbekker87/flask-mysql-guestbook.git
+git clone https://github.com/ruanbekker/flask-mysql-guestbook
 cd flask-mysql-guestbook
 virtualenv venv
 source venv/bin/activate
