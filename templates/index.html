@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+	<title>Guest Book</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet"> 
+    <!-- Bootstrap theme -->
+    <link href="{{ url_for('static', filename='css/bootstrap-theme.min.css') }}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{{ url_for('static', filename='css/theme.css') }}" rel="stylesheet">
+
+	<!-- Google Fonts -->
+	<link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet'  type='text/css'>
+  </head>
+
+  <body>
+
+    <div class="container theme-showcase" role="main">
+
+      <div class="jumbotron">
+		  <h1><center>Guest Book ({{counts}})</center></h1>
+		<div align="right">
+		<a href="{{ url_for('sign') }}"><input type="button" class="btn btn-primary btn-lg" value="Sign" /></a>
+			<a href="{{ url_for('search') }}"><input type="button" class="btn btn-success btn-lg" value="Search" /></a>
+		</div>
+		</div>
+
+      {% for r in result %}
+      <div class="page-header">
+        <h3>{{ r.name }}</h3>
+      </div>
+      <div class="well">
+        <p>{{ r.comment }}</p>
+      </div>
+      {% endfor %}
+
+    </div> <!-- /container -->
+	<footer>
+		<center>
+			<h4>Built By: Ruan Bekker</h4><p>  
+			<h4>Powered By: Python Flask and MySQL</h4><p>  
+		</center>
+	</footer>
+  </body>
+</html>
