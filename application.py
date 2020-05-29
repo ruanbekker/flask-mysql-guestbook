@@ -1,9 +1,15 @@
 from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy # instantiate database object # import class
+from os import environ
+
+MYSQL_USER=environ['MYSQL_USER']
+MYSQL_PASSWORD=environ['MYSQL_PASSWORD']
+MYSQL_HOST=environ['MYSQL_HOST']
+MYSQL_DATABASE=environ['MYSQL_DATABASE']
 
 application = Flask(__name__)
 
-application.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://user:pass@host.domain.com/mydb'
+application.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://{user}:{passwd}@{host}/{db}'.format(user=MYSQL_USER, passwd=MYSQL_PASSWORD, host=MYSQL_HOST, db=MYSQL_DATABASE)
 application.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(application) # instantiate database object #interface with flask app itself
@@ -48,4 +54,4 @@ def searchresults():
     return render_template('index.html', result=result)
 
 if __name__ == '__main__':
-    application.run()
+    application.run(host="0.0.0.0")

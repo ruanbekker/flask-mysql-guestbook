@@ -1,0 +1,34 @@
+version: "3.7"
+
+services:
+  app:
+    container_name: "app"
+    build:
+      context: . 
+      dockerfile: Dockerfile
+    ports:
+      - 5000:5000
+    depends_on:
+      - db
+    restart: "always"
+    networks:
+      - guestbook
+  db:
+    image: mariadb:10-bionic
+    container_name: "db"
+    environment:
+      - MYSQL_ROOT_PASSWORD=root_password
+      - MYSQL_USER=app_user
+      - MYSQL_PASSWORD=app_password
+      - MYSQL_DATABASE=app_db
+    volumes:
+      - guestbook:/var/lib/mysql
+    networks:
+      - guestbook
+
+networks:
+  guestbook: 
+    name: guestbook
+
+volumes:
+  guestbook: {}
