@@ -1,7 +1,8 @@
 from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy # instantiate database object # import class
 from os import environ
-
+print(environ)
+print(environ['MYSQL_USER'])
 MYSQL_USER=environ['MYSQL_USER']
 MYSQL_PASSWORD=environ['MYSQL_PASSWORD']
 MYSQL_HOST=environ['MYSQL_HOST']
@@ -51,7 +52,9 @@ def process():
 def searchresults():
     name = request.form['name']
     result = Comments.query.filter_by(name=name)
-    return render_template('index.html', result=result)
+    counts = result.count()
+    return render_template('index.html', result=result, counts=counts)
 
 if __name__ == '__main__':
+    db.create_all()
     application.run(host="0.0.0.0")
