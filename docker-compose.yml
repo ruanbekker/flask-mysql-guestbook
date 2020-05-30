@@ -6,6 +6,11 @@ services:
     build:
       context: . 
       dockerfile: Dockerfile
+    environment:
+      - MYSQL_USER=app_user
+      - MYSQL_PASSWORD=app_password
+      - MYSQL_DATABASE=app_db
+      - MYSQL_HOST=db
     ports:
       - 5000:5000
     depends_on:
@@ -14,15 +19,16 @@ services:
     networks:
       - guestbook
   db:
-    image: mariadb:10-bionic
+    image: mariadb:10.5-bionic
     container_name: "db"
     environment:
       - MYSQL_ROOT_PASSWORD=root_password
       - MYSQL_USER=app_user
       - MYSQL_PASSWORD=app_password
       - MYSQL_DATABASE=app_db
+      - MYSQL_HOST=db
     volumes:
-      - guestbook:/var/lib/mysql
+      - guestbook:/var/lib/mysql:rw,delegated
     networks:
       - guestbook
 
