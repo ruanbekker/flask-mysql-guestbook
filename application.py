@@ -1,8 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy # instantiate database object # import class
 from os import environ
-print(environ)
-print(environ['MYSQL_USER'])
+
 MYSQL_USER=environ['MYSQL_USER']
 MYSQL_PASSWORD=environ['MYSQL_PASSWORD']
 MYSQL_HOST=environ['MYSQL_HOST']
