@@ -7,6 +7,8 @@ MYSQL_PASSWORD=environ['MYSQL_PASSWORD']
 MYSQL_HOST=environ['MYSQL_HOST']
 MYSQL_DATABASE=environ['MYSQL_DATABASE']
 
+GOOGLE_FONT=environ['GOOGLE_FONT']
+
 application = Flask(__name__)
 
 application.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://{user}:{passwd}@{host}/{db}'.format(user=MYSQL_USER, passwd=MYSQL_PASSWORD, host=MYSQL_HOST, db=MYSQL_DATABASE)
@@ -24,15 +26,15 @@ def index():
     result = Comments.query.all() # use the comments class
     #result = Comments.query.filter_by(name='Ruan')
     counts = Comments.query.count()
-    return render_template('index.html', result=result, counts=counts)
+    return render_template('index.html', result=result, counts=counts, google_font=GOOGLE_FONT)
 
 @application.route('/sign')
 def sign():
-    return render_template('sign.html')
+    return render_template('sign.html', google_font=GOOGLE_FONT)
 
 @application.route('/search')
 def search():
-    return render_template('search.html')
+    return render_template('search.html', google_font=GOOGLE_FONT)
 
 
 @application.route('/process', methods=['POST'])
@@ -45,14 +47,14 @@ def process():
     db.session.commit()                     # save changes
 
     return redirect(url_for('index'))
-    return render_template('index.html', name=name, comment=comment)
+    return render_template('index.html', name=name, comment=comment, google_font=GOOGLE_FONT)
 
 @application.route('/searchresults', methods=['GET', 'POST'])
 def searchresults():
     name = request.form['name']
     result = Comments.query.filter_by(name=name)
     counts = result.count()
-    return render_template('index.html', result=result, counts=counts)
+    return render_template('index.html', result=result, counts=counts, google_font=GOOGLE_FONT)
 
 if __name__ == '__main__':
     db.create_all()
