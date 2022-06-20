@@ -3,7 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="refresh" content="4;url=/" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
 	<!-- Google Fonts -->
@@ -18,27 +19,8 @@
   <body>
     <div class="container">
       <form class="form-signin" method="post" action="/process">
-		  <h2 class="form-signin-heading"><center>Sign the Guest Book</center></h2>
+		  <h2 class="form-signin-heading"><center>Thank You</center></h2>
         
-		<div class="form-group">
-          <label for="inputName" class="sr-only">Name</label>
-          <input type="text" id="inputName" name="name" class="form-control" placeholder="Name" required autofocus>
-        </div>
-
-		<div class="form-group">
-          <label for="countryName" class="sr-only">Country</label>
-		  <select class="form-control" name="country" id="countryNameId">
-            {% for country in countries %}
-              <option value="{{ country }}">{{ country }}</option>
-            {% endfor %}
-          </select>
-        </div>
-
-        <div class="form-group">
-          <label for="comment" class="sr-only">Comment:</label>
-            <textarea class="form-control" name="comment" rows="5" id="comment" placeholder="Comment" required></textarea>
-        </div>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign</button>
       </form>
     </div> 
 
@@ -47,7 +29,7 @@
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 <footer>
 		<center>
-			<h4> <a href="/">Home</a></h4><p>
+			<h4> Thank you {{ name }}. You will be redirected back to the home page in 5 seconds.</h4><p>
 		</center>
 	</footer>  
   </body>
