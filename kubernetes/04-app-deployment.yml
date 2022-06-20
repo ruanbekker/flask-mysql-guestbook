@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: flask-app
-          image: ruanbekker/flask-mysql-guestbook:lobster
+          image: ruanbekker/flask-mysql-guestbook:nunito
           imagePullPolicy: Always
           ports:
             - containerPort: 5000
@@ -27,8 +27,8 @@ spec:
                 secretKeyRef:
                   name: app-secrets
                   key: db_password
-            - name: GOOGLE_FONT
-              value: Lobster
+            - name: FLASK_APP
+              value: application
             - name: MYSQL_USER
               value: app_user
             - name: MYSQL_DATABASE

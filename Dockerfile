@@ -1,7 +1,6 @@
 FROM alpine:3.11.6
 
-# https://fonts.google.com/
-ENV GOOGLE_FONT=Nunito
+ENV FLASK_APP application
 
 RUN apk add --virtual build-deps gcc python3-dev musl-dev py3-mysqlclient  
 WORKDIR /src

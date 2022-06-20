@@ -42,3 +42,21 @@ python
 ```
 python application.py
 ```
+
+### Docker
+
+Build and run:
+
+```
+docker-compose up --build -d
+```
+
+For database migrations:
+
+```
+docker-compose exec app /bin/sh -c 'FLASK_APP=application flask db init'
+docker-compose exec app /bin/sh -c 'FLASK_APP=application flask db migrate -m "Initial"'
+docker-compose exec app /bin/sh -c 'FLASK_APP=application flask db upgrade'
+```
+
+

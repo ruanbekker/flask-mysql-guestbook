@@ -3,11 +3,12 @@ version: "3.7"
 services:
   app:
     container_name: "app"
-    image: ruanbekker/flask-mysql-guestbook:lobster
+    image: ruanbekker/flask-mysql-guestbook:nunito
     build:
       context: . 
       dockerfile: Dockerfile
     environment:
+      - FLASK_APP=application
       - GOOGLE_FONT=Nunito
       - MYSQL_USER=app_user
       - MYSQL_PASSWORD=app_password
