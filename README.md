@@ -83,4 +83,11 @@ For running the application with python directly and with docker-compose:
 For deploying with kubernetes, the endpoint is:
 - http://flask-app.127.0.0.1.nip.io
 
+### Traefik Hub
 
+Using this application in [Traefik Hub](https://traefik.io/blog/publish-and-secure-applications-with-traefik-hub/):
+- https://traefik.io/blog/publish-and-secure-applications-with-traefik-hub/
+
+### Resources
+
+Thanks to [Anthony from PrettyPrinted](https://prettyprinted.com/) for all your Flask tutorials, it helped me tremendously over the last couple of years.
